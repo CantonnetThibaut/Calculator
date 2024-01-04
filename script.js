@@ -22,3 +22,23 @@ function calculateResult() {
 function backspace() {
     result.innerHTML = result.innerHTML.slice(0, -1);
 }
+
+function handleKeyboardInput(event) {
+    const key = event.key;
+
+    if (key >= '0' && key <= '9') {
+        appendValue(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        appendValue(key);
+    } else if (key === '.') {
+        appendValue(key);
+    } else if (key === 'Enter') {
+        calculateResult();
+    } else if (key === 'Escape') {
+        clearResult();
+    } else if (key === 'Backspace') {
+        backspace();
+    }
+}
+
+document.addEventListener('keydown', handleKeyboardInput);
